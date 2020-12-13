@@ -1,0 +1,3909 @@
+{
+	"info": {
+		"_postman_id": "e81c25a8-2fd9-4c57-b41a-fe8664f9a9cc",
+		"name": "Cybernetic",
+		"description": "App Sec project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "User Profile (Me)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Return Logged In User Profile\r\n"
+							},
+							"response": [
+								{
+									"name": "User profile (Me) - Invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:03:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid token. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - expired token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 10:58:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Signature expired. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:02:47 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"admin\": false,\n        \"email\": \"test@test.com\",\n        \"user_id\": 1,\n        \"username\": \"tester\"\n    },\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Users (Broken Function Level Authorization)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										""
+									]
+								},
+								"description": "View All Users\r\nAdmin: False"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Profile",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"username\":\"Dylan\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Edit Own User Profile\r\n"
+							},
+							"response": [
+								{
+									"name": "User profile (Me) - expired token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 10:58:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Signature expired. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:02:47 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"admin\": false,\n        \"email\": \"test@test.com\",\n        \"user_id\": 1,\n        \"username\": \"tester\"\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "User profile (Me) - Invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:03:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid token. Please log in again.\",\n    \"success\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"password\": \"newpassword\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Change Own Password\r\n"
+							},
+							"response": [
+								{
+									"name": "User profile (Me) - expired token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 10:58:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Signature expired. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:03:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid token. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:02:47 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"admin\": false,\n        \"email\": \"test@test.com\",\n        \"user_id\": 1,\n        \"username\": \"tester\"\n    },\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Deactivate User (Broken Function Level Authorization)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/102/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"102",
+										""
+									]
+								},
+								"description": "Deactivate User\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Deactivate Me",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Deactivate User\r\n"
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "55c18774-a379-4659-af8e-2345e1ebc718",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "daa3de33-bda8-4287-a54a-626e83f2454d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "User profile (Me) (Staff)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Return Logged In User Profile\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										""
+									]
+								},
+								"description": "View All Users\r\nAdmin: True"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Profile",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"username\": \"New Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Edit Own User Profile\r\n"
+							},
+							"response": [
+								{
+									"name": "User profile (Me) - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:02:47 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"admin\": false,\n        \"email\": \"test@test.com\",\n        \"user_id\": 1,\n        \"username\": \"tester\"\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "User profile (Me) - expired token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 10:58:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Signature expired. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:03:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid token. Please log in again.\",\n    \"success\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"password\": \"password2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/users/me/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								},
+								"description": "Change Own Password\r\n"
+							},
+							"response": [
+								{
+									"name": "User profile (Me) - Invalid token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:03:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid token. Please log in again.\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "User profile (Me) - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 11:02:47 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"admin\": false,\n        \"email\": \"test@test.com\",\n        \"user_id\": 1,\n        \"username\": \"tester\"\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "User profile (Me) - expired token",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/users/me/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"users",
+												"me",
+												""
+											]
+										}
+									},
+									"status": "UNAUTHORIZED",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 10:58:30 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Signature expired. Please log in again.\",\n    \"success\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "Deactivate User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/users/102/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"users",
+										"102",
+										""
+									]
+								},
+								"description": "Deactivate User\r\n"
+							},
+							"response": []
+						}
+					],
+					"description": "Admin: True",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Admin_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec378a0e-88c9-4657-bd38-bedd335d168b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "69cd9b73-a7ec-454c-9ea6-8074623edb2f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "User API\r\n\r\nCustomer\r\n1. User Profile\r\n2. Deactivate Account\r\n3. Edit Profile \r\n4. Change Password\r\n\r\nAdmin\r\n1. User Profile\r\n2. Deactivate Account\r\n3. Edit Profile \r\n4. Change Password\r\n5. View All Users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0609db8f-7287-4528-9953-375e3500d8d2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b63244b-54b8-41fe-bbd5-ad835ba6e26b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/auth/logout/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"auth",
+										"logout",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fd9a0304-1383-4769-8100-fb24676b680c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bca0e321-3f13-448b-ac20-78cd77686b3c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"dylanliew0503@gmail.com\",\n\t\"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/auth/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						},
+						"description": "Login into Cybernetic, returns JWT auth token"
+					},
+					"response": [
+						{
+							"name": "Login - Successful Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/auth/login/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"auth",
+										"login",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "227"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 10:45:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Successfully logged in.\",\n    \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTIzMDQzMjAsImlhdCI6MTU5MjMwNDMxNSwic3ViIjoxfQ.tOVFvLFLmZLefEtmRu2oqeut41_crOhZW8cGS67Rpns\"\n}"
+						},
+						{
+							"name": "Login - Failed, incorrect username/password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/auth/login/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"auth",
+										"login",
+										""
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 10:46:59 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Incorrect username or password\",\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"tester3\",\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/auth/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"auth",
+								"register",
+								""
+							]
+						},
+						"description": "Register a new user and returns JWT auth token of the corresponding user"
+					},
+					"response": [
+						{
+							"name": "Register - Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"tester\",\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/auth/register/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 10:43:18 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTIzMDQyMDMsImlhdCI6MTU5MjMwNDE5OCwic3ViIjoxfQ.979DYzxQyQa1opjxBPNEsCnBHZs6uW2TlRjvC0skYAA\",\n    \"message\": \"Successfully registered.\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "Register - Failed, user already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"tester\",\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/auth/register/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"auth",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "ACCEPTED",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.8.2"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jun 2020 10:45:57 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User already exists. Please Log in.\",\n    \"success\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"dylanliew0503@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/auth/forget-password/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"auth",
+								"forget-password",
+								""
+							]
+						},
+						"description": "Email a link to existing email for password reseting"
+					},
+					"response": []
+				},
+				{
+					"name": "New Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"newpassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/auth/forget-password/new-password/ImR5bGFuf-K8QjcdNe0Z_A0BLYXnZteI",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"auth",
+								"forget-password",
+								"new-password",
+								"ImR5bGFuf-K8QjcdNe0Z_A0BLYXnZteI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 Factor Authentication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"pin\":\"349219\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/auth/login/second-factor/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"auth",
+								"login",
+								"second-factor",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Auth API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0885a14e-86de-47b6-ac27-e8a7e81f2d5d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "076464f4-c870-424e-ad05-414839f89d00",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Addresses",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get Addresses",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/address/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"address",
+										""
+									]
+								},
+								"description": "Return All Addresses added by the User \r\n"
+							},
+							"response": [
+								{
+									"name": "Get Addresses - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "908"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 03:43:13 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"cards\": [\n            {\n                \"address_line1\": \"959 Hougang Street 91\",\n                \"address_line2\": \"#04-288\",\n                \"contact\": \"95553459\",\n                \"description\": \"Home Address\",\n                \"id\": 1,\n                \"name\": \"Testing Dude\",\n                \"postal\": \"#04-288\",\n                \"user\": {\n                    \"admin\": false,\n                    \"email\": \"test@test.com\",\n                    \"user_id\": 1,\n                    \"username\": \"tester\"\n                }\n            },\n            {\n                \"address_line1\": \"107C CANBERRA STREET #03-605\",\n                \"address_line2\": \"EASTBROOK @ CANBERRA\",\n                \"contact\": \"95550448\",\n                \"description\": \"Office Address\",\n                \"id\": 2,\n                \"name\": \"Testing Dude\",\n                \"postal\": \"EASTBROOK @ CANBERRA\",\n                \"user\": {\n                    \"admin\": false,\n                    \"email\": \"test@test.com\",\n                    \"user_id\": 1,\n                    \"username\": \"tester\"\n                }\n            }\n        ]\n    },\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Address",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/address/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"address",
+										"3",
+										""
+									]
+								},
+								"description": "Return Specific Address added by the User \r\n"
+							},
+							"response": [
+								{
+									"name": "Get Address - Successful",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"2",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "403"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:04:48 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"address_line1\": \"107C CANBERRA STREET #03-605\",\n        \"address_line2\": \"EASTBROOK @ CANBERRA\",\n        \"contact\": \"95550448\",\n        \"description\": \"Office Address\",\n        \"id\": 2,\n        \"name\": \"Testing Dude\",\n        \"postal_code\": \"123456\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "Get Address - Look it's insecure",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/3/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"3",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "367"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:05:07 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"address_line1\": \"227 LORONG 8 TOA PAYOH #06-142\",\n        \"address_line2\": null,\n        \"contact\": \"95554072\",\n        \"description\": \"Home\",\n        \"id\": 3,\n        \"name\": \"Joel\",\n        \"postal_code\": \"310227\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"joel@test.com\",\n            \"user_id\": 3,\n            \"username\": \"joel\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "Get Address - Not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/5/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"5",
+												""
+											]
+										}
+									},
+									"status": "NOT FOUND",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "62"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:05:42 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"No such Address saved\",\n    \"success\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Address",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/address/2/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"address",
+										"2",
+										""
+									]
+								},
+								"description": "Delete Specific Address added by the User \r\n"
+							},
+							"response": [
+								{
+									"name": "Delete Address - No such address",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/4/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"4",
+												""
+											]
+										}
+									},
+									"status": "NOT FOUND",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "62"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:11:04 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"No such Address saved\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "Delete Address - Successful",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/address/4/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"4",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "22"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:10:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Edit Address",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"postal_code\": \"123456\",\n\t\"default\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/address/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"address",
+										"3",
+										""
+									]
+								},
+								"description": "Edit Specific Address Information chosen by the User \r\n"
+							},
+							"response": [
+								{
+									"name": "Edit Address - Unknown Field",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"postal\": \"123456\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/address/2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"2",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "403"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:04:01 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"address_line1\": \"107C CANBERRA STREET #03-605\",\n        \"address_line2\": \"EASTBROOK @ CANBERRA\",\n        \"contact\": \"95550448\",\n        \"description\": \"Office Address\",\n        \"id\": 2,\n        \"name\": \"Testing Dude\",\n        \"postal_code\": \"123456\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "Edit Address - Successful",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"postal_code\": \"123456\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/address/2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												"2",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "403"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:03:19 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"address_line1\": \"107C CANBERRA STREET #03-605\",\n        \"address_line2\": \"EASTBROOK @ CANBERRA\",\n        \"contact\": \"95550448\",\n        \"description\": \"Office Address\",\n        \"id\": 2,\n        \"name\": \"Testing Dude\",\n        \"postal_code\": \"123456\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "New Address",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"description\": \"Warehouse 2\",\n\t\"address_1\": \"959 Hougang Street 91\",\n\t\"address_2\":  \"#04-288\",\n\t\"postal_code\": \"530959\",\n\t\"contact\": \"95556072\",\n\t\"name\": \"dylan_friend\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/address/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"address",
+										""
+									]
+								},
+								"description": "Add Address added by the User \r\n"
+							},
+							"response": [
+								{
+									"name": "New Address - Successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"description\": \"Warehouse 2\",\n\t\"address_line1\": \"959 Hougang Street 91 #04-288\",\n\t\"postal_code\": \"530959\",\n\t\"contact\": \"95556072\",\n\t\"name\": \"Testing Dude\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/address/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "383"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 05:08:49 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"address_line1\": \"959 Hougang Street 91 #04-288\",\n        \"address_line2\": null,\n        \"contact\": \"95556072\",\n        \"description\": \"Warehouse 2\",\n        \"id\": 4,\n        \"name\": \"Testing Dude\",\n        \"postal_code\": \"530959\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "New Address - Already exist",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"description\": \"Warehouse\",\n\t\"address_line1\": \"959 Hougang Street 91 #04-288\",\n\t\"postal_code\": \"530959\",\n\t\"contact\": \"95556072\",\n\t\"name\": \"Testing Dude\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/address/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"address",
+												""
+											]
+										}
+									},
+									"status": "BAD REQUEST",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "62"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 17 Jun 2020 03:54:34 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Address already exist\",\n    \"success\": false\n}"
+								}
+							]
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4e62b9fa-c163-42e6-9d08-723167bd85f1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6710f9a5-690c-42cb-9038-55f3897f828f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Address API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d52682ed-6b72-40c8-8c50-f3034e30261e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cb56de8-a72f-4543-aec0-10b5fe458e0b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get Cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/cards/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cards",
+										""
+									]
+								},
+								"description": "Return all user bank cards added\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Card",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/cards/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cards",
+										"3",
+										""
+									]
+								},
+								"description": "return a specific card based on ID\r\n"
+							},
+							"response": [
+								{
+									"name": "Get Card - Success, insecure",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/cards/3/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												"3",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "290"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 14:15:46 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"cvc\": \"956\",\n        \"expiry\": \"06/2025\",\n        \"name\": \"Joel\",\n        \"number\": \"4843635704855861\",\n        \"type\": \"Visa Debit\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"joel@test.com\",\n            \"user_id\": 3,\n            \"username\": \"joel\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "Get Card - no such card",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/cards/4/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												"4",
+												""
+											]
+										}
+									},
+									"status": "NOT FOUND",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 14:19:16 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"No such card\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "Get Card - Success, normal",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/cards/2/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												"2",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "301"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 14:16:05 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"cvc\": \"123\",\n        \"expiry\": \"12/2025\",\n        \"name\": \"Testing Dude\",\n        \"number\": \"4843635704855861\",\n        \"type\": \"Visa Credit\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "New card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"number\": \"4556822085271937\",\n\t\"name\": \"Dylan\",\n\t\"cvc\": \"563\",\n\t\"expiry_year\": \"2029\",\n\t\"expiry_month\": \"09\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/cards/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cards",
+										""
+									]
+								},
+								"description": "Add a new card\r\n"
+							},
+							"response": [
+								{
+									"name": "New card - Successful, normal",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"number\": \"4556822085271937\",\n\t\"name\": \"Kent\",\n\t\"cvc\": \"563\",\n\t\"expiry_year\": \"2029\",\n\t\"expiry_month\": \"09\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/cards/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "292"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 15:11:43 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"cvc\": \"563\",\n        \"expiry\": \"01/1970\",\n        \"name\": \"Kent\",\n        \"number\": \"4556822085271937\",\n        \"type\": \"Visa Debit\",\n        \"user\": {\n            \"admin\": false,\n            \"email\": \"test@test.com\",\n            \"user_id\": 1,\n            \"username\": \"tester\"\n        }\n    },\n    \"success\": true\n}"
+								},
+								{
+									"name": "New card - card already exist",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"number\": \"4556822085271937\",\n\t\"name\": \"Kent\",\n\t\"cvc\": \"563\",\n\t\"expiry_year\": \"2029\",\n\t\"expiry_month\": \"09\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:1000/cards/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												""
+											]
+										}
+									},
+									"status": "BAD REQUEST",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 15:12:16 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Card already exist\",\n    \"success\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "Remove Card",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/cards/3/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cards",
+										"3",
+										""
+									]
+								},
+								"description": "Remove a card by ID\r\n"
+							},
+							"response": [
+								{
+									"name": "Remove Card - No such card",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/cards/4/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												"4",
+												""
+											]
+										}
+									},
+									"status": "NOT FOUND",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 15:15:39 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"No such card\",\n    \"success\": false\n}"
+								},
+								{
+									"name": "Remove Card - Sucessful",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:1000/cards/4/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "1000",
+											"path": [
+												"cards",
+												"4",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "22"
+										},
+										{
+											"key": "Server",
+											"value": "Werkzeug/1.0.1 Python/3.8.2"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 16 Jun 2020 15:16:11 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true\n}"
+								}
+							]
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a84349c3-86c5-44f8-a94a-ff8d599f8113",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8f48d4a-9036-404d-81bc-f24a3d542e5c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Cards API\r\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "44cc0e98-763f-4383-b5ef-de09b775dd4d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f166870b-f0a1-45dc-b3fe-e9ec40283727",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Upload Product Image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Dylan/Desktop/Cybernetic/cybernetic/uploads/Airpods_25ba37068-f15d-436b-9639-a91e15d2d33a.jpg"
+										}
+									],
+									"options": {
+										"formdata": {}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/uploads/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"uploads",
+										""
+									]
+								},
+								"description": "Try Update Product Image as User \r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"retail_price\": 135.0,\r\n    \"name\": \"Blackpods Pro2\",\r\n    \"description\": \"This is a scam\",\r\n    \"pic_filename\": \"scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg\",\r\n    \"stock\": 30\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										""
+									]
+								},
+								"description": "Add A New Product\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Product Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/products/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"1",
+										""
+									]
+								},
+								"description": "View Product Details\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/products/4/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"4",
+										""
+									]
+								},
+								"description": "Delete Product\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Product Details",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"retail_price\": 215.0,\r\n    \"description\": \"This is a new scam\",\r\n    \"pic_filename\": \"scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg\",\r\n    \"stock\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"1",
+										""
+									]
+								},
+								"description": "Edit Product Details\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "497f3fd9-a780-46fc-a187-c6d5f8c731e3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e19d413-0481-44b1-8dec-30d84452c1be",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Upload Product Image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/Dylan/Desktop/Cybernetic/cybernetic/uploads/Airpods_25ba37068-f15d-436b-9639-a91e15d2d33a.jpg"
+										}
+									],
+									"options": {
+										"formdata": {}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/uploads/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"uploads",
+										""
+									]
+								},
+								"description": "Try Update Product Image as User \r\nUsername : Admin\r\nEmail : Admin@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"retail_price\": 135.0,\r\n    \"name\": \"Blackpods Pro2\",\r\n    \"description\": \"This is a scam\",\r\n    \"pic_filename\": \"scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg\",\r\n    \"stock\": 30\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										""
+									]
+								},
+								"description": "Add A New Product\r\nUsername : Admin\r\nEmail : Admin@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Product Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"1"
+									]
+								},
+								"description": "View Product Details\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/products/25/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"25",
+										""
+									]
+								},
+								"description": "Delete Product\r\nUsername : Admin\r\nEmail : Admin@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Product Details",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"retail_price\": 215.0,\r\n    \"description\": \"This is a new scam\",\r\n    \"pic_filename\": \"scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg\",\r\n    \"stock\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/products/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"products",
+										"1",
+										""
+									]
+								},
+								"description": "Edit Product Details\r\nUsername : Admin\r\nEmail : Admin@test.com"
+							},
+							"response": []
+						}
+					],
+					"description": "Admin: True",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Admin_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "36295b03-786a-45a8-aa86-cea4d5b0a926",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e0843aa-9350-47b1-a52e-10e769c963d2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Retrieve Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/products/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Product Image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/products/uploads/scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"products",
+								"uploads",
+								"scampods_3529963a5-a2fa-458c-8b71-b4f8acdc1e12.jpg"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get Cart",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:1000/cart/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cart",
+										""
+									]
+								},
+								"description": "Retrieve User Cart\r\nUsername : test\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Add to Cart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\": 3,\r\n    \"quantity\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/cart/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cart",
+										""
+									]
+								},
+								"description": "Add Item to Cart\r\nUsername : test\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Checkout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address_id\": 3,\r\n    \"credit_card_id\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/cart/checkout/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cart",
+										"checkout",
+										""
+									]
+								},
+								"description": "Cart Checkout\r\nUsername : test\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Cart Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/cart/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cart",
+										"items",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Cart Item ",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/cart/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"cart",
+										"items",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8928c2e0-ceef-47c2-b883-b3bc184d171a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "631fc77e-4f0f-480d-b182-97c431a5c21d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/orders/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										""
+									]
+								},
+								"description": "Return Orders of the Logged In User\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Get order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/orders/53/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										"53",
+										""
+									]
+								},
+								"description": "Return Specific Order of the Logged In User\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Confirm Received",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/orders/53/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										"53",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Tracking Number",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tracking_no\":\"joellifegood123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/orders/53/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										"53",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7cf0a77b-3157-4a08-9053-262074eeb11f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "25bef626-969a-4a1b-95d1-26d0997c1aac",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/orders/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										""
+									]
+								},
+								"description": "Return All Orders"
+							},
+							"response": []
+						},
+						{
+							"name": "Get order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/orders/53/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										"53",
+										""
+									]
+								},
+								"description": "Return Specific Order of the Logged In User\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Tracking Number",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tracking_no\":\"joellifegood123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/orders/53/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"orders",
+										"53",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Admin : True",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Admin_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "544bc154-713f-46da-861d-7414e416a730",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "caff1c65-24e5-462a-aaa9-b372c4b357d3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "View Reviews",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/reviews/product/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"reviews",
+										"product",
+										"2"
+									]
+								},
+								"description": "View Reviews by Product\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Review",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comments\":\"Hello\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/reviews/82/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"reviews",
+										"82",
+										""
+									]
+								},
+								"description": "Edit Review Submitted\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Review",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"comments\":\"Hello\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/reviews/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"reviews",
+										"1",
+										""
+									]
+								},
+								"description": "Delete Review Written\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Review",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\": 5,\r\n    \"comments\": \"Very Good\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1000/reviews/product/1/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"reviews",
+										"product",
+										"1",
+										""
+									]
+								},
+								"description": "Add Review\r\nUsername : Tester\r\nEmail : test@test.com"
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f16f05f5-f154-43ff-99ae-652cbecfb5d5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0acc587-53cf-45bb-9684-209724bff78a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Search Product ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/search/product/?name=Airpods 2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"search",
+										"product",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Airpods 2"
+										}
+									]
+								},
+								"description": "Search for Product by Key"
+							},
+							"response": []
+						},
+						{
+							"name": "Search User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/search/user/?username=Dylan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"search",
+										"user",
+										""
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "Dylan"
+										}
+									]
+								},
+								"description": "Search for User by Key"
+							},
+							"response": []
+						}
+					],
+					"description": "Authorization Bearer Token\r\nID: 2\r\nUsername: dylan\r\nEmail: dylanliew0503@gmail.com\r\nPassword: password\r\n2FA-Enabled: False\r\nEmail Verified: True ",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Customer_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2cd7d4b5-6e18-4377-a020-42116d1aacdd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fad78e82-0337-423e-bb76-d694f5085f6d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Search Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/search/product/?name=Airpods 2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"search",
+										"product",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Airpods 2"
+										}
+									]
+								},
+								"description": "Search for Product by Key"
+							},
+							"response": []
+						},
+						{
+							"name": "Search User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1000/search/user/?username=Dylan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"search",
+										"user",
+										""
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "Dylan"
+										}
+									]
+								},
+								"description": "Search for User by Key"
+							},
+							"response": []
+						}
+					],
+					"description": "Admin : True\r\n",
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{Admin_Token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e48b6085-3afa-4c49-88e5-8e92faf1e51b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "91f704dc-3b2f-4681-ba8c-e9b4f3ba1ce8",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2d9aacd8-6505-4cdd-8319-3ebd779615a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a3321e2d-2c6d-4e42-8a82-6c38585e955a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "0e4dbc76-ef0b-419a-aa55-87d9384a2edc",
+			"key": "Customer_Token",
+			"value": ""
+		},
+		{
+			"id": "3520e7b7-7872-494e-90e2-74549f2edcf4",
+			"key": "Admin_Token",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
